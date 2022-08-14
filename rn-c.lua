@@ -1,22 +1,16 @@
 local NPC = { x = 7.34, y = -1096.03, z = 29.8, rotation = 245.0, NetworkSync = true}
 cooldowned = false
-
-local blips = {
-    {title="Weapon Seller", colour=8, id=567, x = NPC.x, y = NPC.y, z = NPC.z}
-}
       
 Citizen.CreateThread(function()
-    for _, info in pairs(blips) do
-      info.blip = AddBlipForCoord(info.x, info.y, info.z)
-      SetBlipSprite(info.blip, info.id)
-      SetBlipDisplay(info.blip, 4)
-      SetBlipScale(info.blip, 0.7)
-      SetBlipColour(info.blip, info.colour)
-      SetBlipAsShortRange(info.blip, true)
-	  BeginTextCommandSetBlipName("STRING")
-      AddTextComponentString(info.title)
+      blip = AddBlipForCoord(NPC.x, NPC.y, NPC.z)
+      SetBlipSprite(blip, 567)
+      SetBlipDisplay(blip, 4)
+      SetBlipScale(blip, 0.7)
+      SetBlipColour(blip, 8)
+      SetBlipAsShortRange(blip, false)
+      BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString("Weapon Seller")
       EndTextCommandSetBlipName(info.blip)
-    end
 end)
 
 Citizen.CreateThread(function()
