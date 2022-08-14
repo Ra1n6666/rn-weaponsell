@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
                 local pweapon = GetSelectedPedWeapon(player)
                 -- print(pweapon)
                 if pweapon == -1569615261 then
-                    exports['mythic_notify']:SendAlert('error', 'You are not holding any weapon.', 3500, { ['background-color'] = '#ff0000', ['color'] = '#ffffff' })
+                    exports['mythic_notify']:DoHudText('error', 'You are not holding any weapon.', 3500, { ['background-color'] = '#ff0000', ['color'] = '#ffffff' })
                 else
                     if not cooldowned then
                         if GetSelectedPedWeapon(GetPlayerPed(-1)) == GetHashKey("WEAPON_KNUCKLE") then
@@ -309,7 +309,7 @@ RemoveWeaponFromPed(GetPlayerPed(-1), GetHashKey("WEAPON_MARKSMANRIFLE"))
 RemoveWeaponFromPed(GetPlayerPed(-1), GetHashKey("WEAPON_MARKSMANRIFLE_MK2"))
                             TriggerServerEvent("rn-weaponsell:givemoney", 600000)
                         else
-                            Failed()
+                            exports['mythic_notify']:DoHudText('error', 'Our system cannot identify the weapon you are holding.', 3500, { ['background-color'] = '#ff0000', ['color'] = '#ffffff' })
                         end
                         cooldowned = true
                         Citizen.Wait(10000)
